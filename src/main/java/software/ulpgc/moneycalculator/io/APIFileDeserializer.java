@@ -1,5 +1,5 @@
 package software.ulpgc.moneycalculator.io;
 
-public interface CurrencyDeserializer {
+public interface APIFileDeserializer {
     Object deserialize(String read);
 }

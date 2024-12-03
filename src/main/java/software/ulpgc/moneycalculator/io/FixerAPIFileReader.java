@@ -7,17 +7,17 @@ import java.io.IOException;
 
 import static org.jsoup.Connection.Method.GET;
 
-public class FixerCurrencyReader implements CurrencyReader {
-    private final String currencyAPIFileURL;
+public class FixerAPIFileReader implements APIFileReader {
+    private final String url;
 
-    public FixerCurrencyReader(String currencyAPIFileURL) {
-        this.currencyAPIFileURL = currencyAPIFileURL;
+    public FixerAPIFileReader(String url) {
+        this.url = url;
     }
 
     @Override
     public String read() {
         try {
-            return read(currencyAPIFileURL);
+            return read(url);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

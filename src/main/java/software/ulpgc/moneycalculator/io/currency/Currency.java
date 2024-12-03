@@ -1,4 +1,4 @@
-package software.ulpgc.moneycalculator.io;
+package software.ulpgc.moneycalculator.io.currency;
 
 public class Currency {
     private final String code;

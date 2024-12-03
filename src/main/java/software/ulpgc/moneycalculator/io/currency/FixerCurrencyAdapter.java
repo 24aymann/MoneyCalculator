@@ -1,11 +1,11 @@
-package software.ulpgc.moneycalculator.io;
+package software.ulpgc.moneycalculator.io.currency;
 
 import software.ulpgc.moneycalculator.io.pojos.FixerCurrencyGetResponse;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FixerCurrencyAdapter implements CurrencyAdapter{
+public class FixerCurrencyAdapter implements CurrencyAdapter {
     @Override
     public List<Currency> adapt(Object object) {
         return adapt(((FixerCurrencyGetResponse) object));
