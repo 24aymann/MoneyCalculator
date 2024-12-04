@@ -1,5 +1,7 @@
 package software.ulpgc.moneycalculator;
 
+import software.ulpgc.moneycalculator.control.CalculateCommand;
+import software.ulpgc.moneycalculator.control.Command;
 import software.ulpgc.moneycalculator.io.*;
 import software.ulpgc.moneycalculator.model.Currency;
 import software.ulpgc.moneycalculator.io.currency.CurrencyLoader;
@@ -13,6 +15,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        MainFrame mainFrame = new MainFrame();
+
         CurrencyLoader currencyLoader = new CurrencyLoader(
                 new FixerAPIFileReader("http://data.fixer.io/api/symbols?access_key=31547d8fcf138f06d26b4f66076050d1"),
                 new FixerCurrencyAdapter(),
@@ -25,9 +29,13 @@ public class Main {
                 new FixerExchangeRateDeserializer()
         );
 
-        List<Currency> currencies = currencyLoader.load();
-        Currency from = currencies.getFirst();
-        Currency to = currencies.getLast();
-        System.out.println(exchangeRateLoader.load(from, to));
+        CalculateCommand command = new CalculateCommand(
+                mainFrame.getMoneyDialog().define(currencyLoader.load()),
+                mainFrame.getCurrencyDialog().define(currencyLoader.load()),
+                exchangeRateLoader,
+                mainFrame.getMoneyDisplay()
+        );
+        mainFrame.put("Calculate", command);
+        mainFrame.setVisible(true);
     }
 }
