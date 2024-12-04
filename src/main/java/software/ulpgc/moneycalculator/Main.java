@@ -1,7 +1,7 @@
 package software.ulpgc.moneycalculator;
 
 import software.ulpgc.moneycalculator.io.*;
-import software.ulpgc.moneycalculator.io.currency.Currency;
+import software.ulpgc.moneycalculator.model.Currency;
 import software.ulpgc.moneycalculator.io.currency.CurrencyLoader;
 import software.ulpgc.moneycalculator.io.currency.FixerCurrencyAdapter;
 import software.ulpgc.moneycalculator.io.currency.FixerCurrencyDeserializer;

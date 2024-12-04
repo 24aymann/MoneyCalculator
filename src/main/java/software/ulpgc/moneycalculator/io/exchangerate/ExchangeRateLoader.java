@@ -2,7 +2,8 @@ package software.ulpgc.moneycalculator.io.exchangerate;
 
 import software.ulpgc.moneycalculator.io.APIFileDeserializer;
 import software.ulpgc.moneycalculator.io.APIFileReader;
-import software.ulpgc.moneycalculator.io.currency.Currency;
+import software.ulpgc.moneycalculator.model.Currency;
+import software.ulpgc.moneycalculator.model.ExchangeRate;
 
 public record ExchangeRateLoader(
         APIFileReader reader,

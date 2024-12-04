@@ -1,6 +1,7 @@
 package software.ulpgc.moneycalculator.io.currency;
 
 import software.ulpgc.moneycalculator.io.pojos.FixerCurrencyGetResponse;
+import software.ulpgc.moneycalculator.model.Currency;
 
 import java.util.List;
 import java.util.stream.Collectors;

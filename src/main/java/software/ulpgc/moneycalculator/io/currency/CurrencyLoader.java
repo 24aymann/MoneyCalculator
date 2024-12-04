@@ -2,6 +2,7 @@ package software.ulpgc.moneycalculator.io.currency;
 
 import software.ulpgc.moneycalculator.io.APIFileDeserializer;
 import software.ulpgc.moneycalculator.io.APIFileReader;
+import software.ulpgc.moneycalculator.model.Currency;
 
 import java.util.List;
 
