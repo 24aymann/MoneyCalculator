@@ -9,37 +9,34 @@ import java.util.List;
 
 public class SwingMoneyDialog extends JPanel implements MoneyDialog {
     private JTextField amountField;
-    private CurrencyDialog currencyDialog;
+    private final CurrencyDialog currencyDialog;
+    private final static Font font = new Font(Font.MONOSPACED, Font.PLAIN | Font.BOLD, 14);
 
-    public SwingMoneyDialog() throws HeadlessException {
-        this.setLayout(new GridLayout(1, 1, 10, 10));
+    public SwingMoneyDialog(CurrencyDialog currencyDialog) throws HeadlessException {
+        this.setLayout(new FlowLayout(FlowLayout.CENTER));
+        this.currencyDialog = currencyDialog;
     }
 
     @Override
     public MoneyDialog define(List<Currency> currencies) {
         add(createAmountField());
-        add(createCurrencyDialog(currencies));
+        add((Component) currencyDialog.define(currencies));
         return this;
     }
 
     private Component createAmountField() {
         JPanel panel = new JPanel();
         JLabel jLabel = new JLabel("Amount: ");
+        jLabel.setFont(font);
         panel.add(jLabel);
 
         JTextField field = new JTextField();
         field.setColumns(5);
+        field.setFont(font);
         this.amountField = field;
         panel.add(field);
 
         return panel;
-    }
-
-    private Component createCurrencyDialog(List<Currency> currencies) {
-        SwingCurrencyDialog dialog = new SwingCurrencyDialog();
-        dialog.define(currencies);
-        this.currencyDialog = dialog;
-        return dialog;
     }
 
     @Override

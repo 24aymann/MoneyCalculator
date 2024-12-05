@@ -17,27 +17,25 @@ public class MainFrame extends JFrame {
     public MainFrame() throws HeadlessException {
         this.setTitle("Money Calculator");
         this.setSize(1000,400);
-        this.setBackground(Color.GRAY);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLayout(new FlowLayout());
+        this.setLayout(new GridLayout(4, 1));
         this.setTitle();
-        this.add(createMoneyDialog());
-        this.add(createCurrencyDialog());
-        this.add(createMoneyDisplay());
+        this.add(createDialogs());
         this.add(createButton());
+        this.add(createMoneyDisplay());
     }
 
     private void setTitle() {
-        JLabel title = new JLabel("Currency conversion", JLabel.CENTER);
-        title.setFont(new Font("New Font", Font.PLAIN, 60));
+        JLabel title = new JLabel("Currency Conversion", JLabel.CENTER);
+        title.setFont(new Font("New Font", Font.BOLD | Font.ITALIC, 45));
         this.add(title);
     }
 
     private JPanel createButton() {
         JButton calculateButton = new JButton("Calculate");
 
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 10));
+        JPanel panel = new JPanel();
         panel.add(calculateButton);
         calculateButton.addActionListener(e -> commands.get("Calculate").execute());
 
@@ -45,21 +43,27 @@ public class MainFrame extends JFrame {
     }
 
     private Component createMoneyDisplay() {
+        JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         SwingMoneyDisplay display = new SwingMoneyDisplay();
+        display.setFont(new Font("New Font", Font.BOLD,18));
         this.moneyDisplay = display;
-        return display;
+        jPanel.add(display);
+        return jPanel;
     }
 
-    private Component createCurrencyDialog() {
-        SwingCurrencyDialog dialog = new SwingCurrencyDialog();
-        this.currencyDialog = dialog;
-        return dialog;
-    }
+    private Component createDialogs() {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
-    private Component createMoneyDialog() {
-        SwingMoneyDialog dialog = new SwingMoneyDialog();
-        this.moneyDialog = dialog;
-        return dialog;
+        SwingCurrencyDialog fromCurrencyDialog = new SwingCurrencyDialog("From: ");
+        SwingMoneyDialog moneyDialog = new SwingMoneyDialog(fromCurrencyDialog);
+        this.moneyDialog = moneyDialog;
+        panel.add(moneyDialog);
+
+        SwingCurrencyDialog toCurrencyDialog = new SwingCurrencyDialog("To: ");
+        this.currencyDialog = toCurrencyDialog;
+        panel.add(toCurrencyDialog);
+
+        return panel;
     }
 
     public MoneyDisplay getMoneyDisplay() {

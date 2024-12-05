@@ -1,9 +1,7 @@
 package software.ulpgc.moneycalculator;
 
 import software.ulpgc.moneycalculator.control.CalculateCommand;
-import software.ulpgc.moneycalculator.control.Command;
 import software.ulpgc.moneycalculator.io.*;
-import software.ulpgc.moneycalculator.model.Currency;
 import software.ulpgc.moneycalculator.io.currency.CurrencyLoader;
 import software.ulpgc.moneycalculator.io.currency.FixerCurrencyAdapter;
 import software.ulpgc.moneycalculator.io.currency.FixerCurrencyDeserializer;
@@ -18,13 +16,13 @@ public class Main {
         MainFrame mainFrame = new MainFrame();
 
         CurrencyLoader currencyLoader = new CurrencyLoader(
-                new FixerAPIFileReader("http://data.fixer.io/api/symbols?access_key=31547d8fcf138f06d26b4f66076050d1"),
+                new FixerAPIFileReader("http://data.fixer.io/api/symbols?access_key=f132e0c0df6e7d56f9bb3e88b2aace7e"),
                 new FixerCurrencyAdapter(),
                 new FixerCurrencyDeserializer()
         );
 
         ExchangeRateLoader exchangeRateLoader = new ExchangeRateLoader(
-                new FixerAPIFileReader("https://api.exchangeratesapi.io/v1/latest?access_key=31547d8fcf138f06d26b4f66076050d1"),
+                new FixerAPIFileReader("https://api.exchangeratesapi.io/v1/latest?access_key=f132e0c0df6e7d56f9bb3e88b2aace7e"),
                 new FixerExchangeRateAdapter(),
                 new FixerExchangeRateDeserializer()
         );

@@ -7,6 +7,6 @@ import javax.swing.*;
 public class SwingMoneyDisplay extends JLabel implements MoneyDisplay {
     @Override
     public void display(Money money) {
-        this.setText(money.toString());
+        this.setText("Result = " + money.toString());
     }
 }
